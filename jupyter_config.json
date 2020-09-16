@@ -1,0 +1,9 @@
+{
+    "VoilaConfiguration": {
+        "enable_nbextensions": true,
+        "template": "materialscloud"
+    },
+    "VoilaExecutePreprocessor": {
+        "timeout": 180
+    }
+}
