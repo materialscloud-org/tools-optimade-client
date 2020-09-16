@@ -21,9 +21,17 @@ def get_voila_templates_dir() -> str:
         if os.path.exists(voila_templates_dir):
             break
     else:
-        raise RuntimeError(
-            f"No valid Voilà 'templates' folder found amongst: {jupyter_dirs.get('data', [])!r}"
-        )
+        for data_dir in jupyter_dirs.get("data", []):
+            if "conda" in data_dir:
+                # Create "voila/templates/" in this virtualenv-specific config folder
+                voila_templates_dir = os.path.join(data_dir, "voila/templates/")
+                os.mkdir(voila_templates_dir)
+                break
+        else:
+            raise RuntimeError(
+                f"No valid Voilà 'templates' folder found amongst: {jupyter_dirs.get('data', [])!r}. "
+                "Also could not find 'conda' in any of data directories."
+            )
 
     return os.path.abspath(voila_templates_dir)
 
