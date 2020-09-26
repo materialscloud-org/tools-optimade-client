@@ -1,1 +1,1 @@
-optimade-client~=2020.9.16.dev2
+optimade-client~=2020.9.27
