@@ -1,4 +1,4 @@
 [submodule "voila-materialscloud-template"]
 	path = voila-materialscloud-template
 	url = https://github.com/materialscloud-org/voila-materialscloud-template
-	branch = update_to_voila_0.2
+	branch = update_font
