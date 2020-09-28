@@ -1,0 +1,16 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: /
+  schedule:
+    interval: daily
+  target-branch: master
+  labels:
+  - OPTIMADE-Client
+- package-ecosystem: gitsubmodule
+  directory: /
+  schedule:
+    interval: daily
+  target-branch: master
+  labels:
+  - Voilà template
