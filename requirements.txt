@@ -1,1 +1,2 @@
 optimade-client==2020.10.1
+voila-materialscloud-template~=0.2.1

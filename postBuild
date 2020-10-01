@@ -9,9 +9,3 @@ jupyter nbextension enable --py --sys-prefix nglview
 
 # Voilà
 jupyter nbextension enable --py --sys-prefix voila
-
-# Update sub-module
-git submodule update --init --remote
-
-# Copy template to Jupyter data dir
-./copy_voila_template.py materialscloud
