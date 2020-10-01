@@ -1,1 +1,1 @@
-optimade-client~=2020.9.29
+optimade-client==2020.10.1
