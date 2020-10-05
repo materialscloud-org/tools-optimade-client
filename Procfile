@@ -1,1 +1,1 @@
-web: voila --port=$PORT --enable_nbextensions=True --template=materialscloud --no-browser --strip_sources=True --VoilaExecutePreprocessor.timeout=180 OPTIMADE-Client.ipynb
+web: voila --port=$PORT --enable_nbextensions=True --template=materialscloud --no-browser --strip_sources=True --VoilaExecutePreprocessor.timeout=180 --MappingKernelManager.cull_idle_timeout=120 --MappingKernelManager.cull_interval=60 OPTIMADE-Client.ipynb
