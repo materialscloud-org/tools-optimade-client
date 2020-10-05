@@ -5,5 +5,9 @@
     },
     "VoilaExecutePreprocessor": {
         "timeout": 180
+    },
+    "MappingKernelManager": {
+        "cull_idle_time": 120,
+        "cull_interval": 60
     }
 }
