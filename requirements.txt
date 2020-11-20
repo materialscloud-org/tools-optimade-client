@@ -1,2 +1,2 @@
 optimade-client[server]==2020.11.19
-voila-materialscloud-template~=0.3.1
+voila-materialscloud-template~=0.3.2
