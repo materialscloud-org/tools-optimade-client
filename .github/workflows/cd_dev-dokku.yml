@@ -1,0 +1,21 @@
+name: CD to dev-dokku
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.repository == 'materialscloud-org/tools-optimade-client'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup dev-dokku remote
+      run: |
+        git remote add dev-dokku dokku@matcloud.xyz:optimadeclient
+        git fetch --all -tp
+
