@@ -1,2 +1,2 @@
 optimade-client[server]==2021.1.25
-voila-materialscloud-template~=0.3.2
+-e git+https://github.com/materialscloud-org/voila-materialscloud-template.git@optimade_client#egg=voila-materialscloud-template
