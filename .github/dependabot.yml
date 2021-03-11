@@ -7,3 +7,8 @@ updates:
   target-branch: master
   labels:
   - OPTIMADE-Client
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: daily
+  target-branch: master
