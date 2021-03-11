@@ -42,7 +42,7 @@ for (var i = 0; i < byteString.length; i++) {{
     ia[i] = byteString.charCodeAt(i);
 }}
 
-var file_data = new Blob([ia], {{type: charset={encoding}}});
+var file_data = new Blob([ia], {{type: 'charset={encoding}'}});
 
 const XHR = new XMLHttpRequest();
 const FD = new FormData();
