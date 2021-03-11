@@ -1,1 +1,1 @@
-web: voila --port=$PORT --no-browser --Voila.config_file_paths=./ OPTIMADE-Client.ipynb
+web: jupyter trust OPTIMADE-Client.ipynb & voila --port=$PORT --no-browser --Voila.config_file_paths=./ OPTIMADE-Client.ipynb
