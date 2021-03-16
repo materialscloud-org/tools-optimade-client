@@ -25,6 +25,11 @@ jobs:
         known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
         config: ${{ secrets.SSH_CONFIG }}
 
+    - name: Install SSH key for host forwarding
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_POST_FORWARDING_KEY }}
+        name: id_rsa
 
     - name: Deploy to dev-dokku
       run: |
