@@ -13,9 +13,21 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
 
-    - name: Setup dev-dokku remote
+    - name: Install SSH key for dev-dokku
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_DEPLOY_KEY }}
+        name: id_rsa_optimadeclient
+        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+        config: ${{ secrets.SSH_CONFIG }}
+
+    - name: Deploy to dev-dokku
       run: |
         git remote add dev-dokku dokku@matcloud.xyz:optimadeclient
-        git fetch --all -tp
-
+        git config --global user.email "casper.andersen@epfl.ch"
+        git config --global user.name "Casper Welzel Andersen"
+        git checkout master
+        git push dev-dokku master
