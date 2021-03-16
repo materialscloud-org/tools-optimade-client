@@ -30,6 +30,7 @@ jobs:
       with:
         key: ${{ secrets.SSH_POST_FORWARDING_KEY }}
         name: id_rsa
+        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
 
     - name: Deploy to dev-dokku
       run: |
