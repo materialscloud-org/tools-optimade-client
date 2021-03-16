@@ -1,5 +1,4 @@
 """Upload to the Materials Cloud QE Input Generator tool"""
-import base64
 import tempfile
 from typing import Union
 import warnings
@@ -28,21 +27,7 @@ class QEInputButton(ipw.HTML):
     _button_format = """<button
     class="p-Widget jupyter-widgets jupyter-button widget-button mod-{button_style}"
     title="Use the chosen structure in the QE Input Generator Tool" style="width:auto;" {disabled}
-    onclick="var dataURI = 'data:charset={encoding};base64,{data}';
-// convert base64/URLEncoded data component to raw binary data held in a string
-var byteString;
-if (dataURI.split(',')[0].indexOf('base64') >= 0)
-    byteString = atob(dataURI.split(',')[1]);
-else
-    byteString = unescape(dataURI.split(',')[1]);
-
-// write the bytes of the string to a typed array
-var ia = new Uint8Array(byteString.length);
-for (var i = 0; i < byteString.length; i++) {{
-    ia[i] = byteString.charCodeAt(i);
-}}
-
-var file_data = new Blob([ia], {{type: 'charset={encoding}'}});
+    onclick="var file_data = new Blob([{data!r}], {{type: 'charset=utf-8'}});
 
 const XHR = new XMLHttpRequest();
 const FD = new FormData();
@@ -101,7 +86,6 @@ XHR.send(FD);">Use in QE Input Generator</button>
             button_style=self.style.value,
             data=kwargs.get("data", ""),
             disabled=kwargs.get("disabled", "disabled"),
-            encoding=kwargs.get("encoding", "utf-8"),
         )
 
     def format_button(self, disabled: bool = True, data: str = None) -> None:
@@ -158,11 +142,7 @@ XHR.send(FD);">Use in QE Input Generator</button>
 
         with tempfile.NamedTemporaryFile(mode="w+b") as handle:
             output.write(handle.name, format="xsf")
-            output = handle.read()
-
-        if isinstance(output, str):
-            output = output.encode("utf-8")
-        output = base64.b64encode(output).decode()
+            output = handle.read().decode("utf-8")
 
         self.format_button(disabled=False, data=output)
 
