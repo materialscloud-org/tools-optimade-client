@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - close_19_CD-to-dev-dokku
 
 jobs:
   deploy:
