@@ -1,0 +1,40 @@
+name: CD to dev-dokku
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.repository == 'materialscloud-org/tools-optimade-client'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
+
+    - name: Install SSH key for dev-dokku
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_DEPLOY_KEY }}
+        name: id_rsa_optimadeclient
+        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+        config: ${{ secrets.SSH_CONFIG }}
+
+    - name: Install SSH key for host forwarding
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_POST_FORWARDING_KEY }}
+        name: id_rsa
+        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+
+    - name: Deploy to dev-dokku
+      run: |
+        git remote add dev-dokku dokku@matcloud.xyz:optimadeclient
+        git config --global user.email "casper.andersen@epfl.ch"
+        git config --global user.name "Casper Welzel Andersen"
+        git checkout master
+        git push dev-dokku master
