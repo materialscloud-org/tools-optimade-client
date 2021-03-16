@@ -14,7 +14,7 @@ with open(TOP_DIR.joinpath("requirements_dev.txt")) as handle:
 
 setup(
     name="tools-optimade-client",
-    version="2021.3.11",
+    version="2021.3.16",
     license="MIT License",
     author="Casper Welzel Andersen",
     author_email="casper.andersen@epfl.ch",
