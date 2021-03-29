@@ -39,7 +39,7 @@ XHR.onreadystatechange = function() {{
     if (XHR.readyState === 4) {{
         var response = JSON.parse(XHR.responseText);
         var link = document.createElement('a');
-        link.href = 'https://dev-tools.materialscloud.org' + response.redirect;
+        link.href = response.redirect;
         link.target = '_blank';
         document.body.appendChild(link);
         link.click();
