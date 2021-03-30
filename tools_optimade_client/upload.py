@@ -7,7 +7,7 @@ import ipywidgets as ipw
 from optimade.adapters import Structure
 from optimade_client.exceptions import OptimadeClientError
 from optimade_client.logger import LOGGER
-from optimade_client.utils import ButtonStyle
+from optimade_client.utils import ButtonStyle, DEVELOPMENT_MODE
 from optimade_client.warnings import OptimadeClientWarning
 from traitlets import traitlets
 
@@ -47,7 +47,7 @@ XHR.onreadystatechange = function() {{
     }}
 }}
 
-XHR.open('POST', 'https://dev-tools.materialscloud.org/qeinputgenerator/compute/upload_structure/')
+XHR.open('POST', 'https://{subdomain}.materialscloud.org/qeinputgenerator/compute/upload_structure/')
 XHR.send(FD);">Use in QE Input Generator</button>
 """
 
@@ -64,6 +64,8 @@ XHR.send(FD);">Use in QE Input Generator</button>
                 )
         else:
             self._button_style = ButtonStyle.DEFAULT
+
+        self._default_subdomain = "dev-tools" if DEVELOPMENT_MODE else "tools"
 
         kwargs.pop("value", None)
         super().__init__(
@@ -86,6 +88,7 @@ XHR.send(FD);">Use in QE Input Generator</button>
             button_style=self.style.value,
             data=kwargs.get("data", ""),
             disabled=kwargs.get("disabled", "disabled"),
+            subdomain=kwargs.get("subdomain", self._default_subdomain),
         )
 
     def format_button(self, disabled: bool = True, data: str = None) -> None:
