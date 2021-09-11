@@ -112,6 +112,22 @@ XHR.send(FD);">Use in QE Input Generator</button>
             self.structure,
         )
         if not self.structure or self.structure is None:
+            LOGGER.debug("structure is not defined.")
+            self.reset()
+            return
+        if not all(
+            getattr(self.structure.attributes, field, None) is not None
+            for field in (
+                "structure_features",
+                "species",
+                "nsites",
+                "lattice_vectors",
+                "dimension_types",
+                "cartesian_site_positions",
+                "species_at_sites",
+            )
+        ):
+            LOGGER.debug("Missing information when trying to convert to `ase.Atoms`")
             self.reset()
             return
 
