@@ -1,3 +1,4 @@
 optimade-client[server]==2022.6.9
+ipywidgets-extended==1.1.1
 voila-materialscloud-template>=0.3.6,<1
 -e .
