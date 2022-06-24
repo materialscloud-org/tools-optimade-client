@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -14,27 +15,28 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        fetch-depth: '0'
+        fetch-depth: 0
 
     - name: Install SSH key for dev-dokku
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.SSH_DEPLOY_KEY }}
-        name: id_rsa_optimadeclient
-        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-        config: ${{ secrets.SSH_CONFIG }}
+        key: ${{ secrets.SSH_KEY_DEV_DOKKU }}
+        name: id_optimadeclient
+        known_hosts: ${{ secrets.SSH_KNOWN_HOST_DEV_DOKKU }}
+        config: ${{ secrets.SSH_CONFIG_DEV_DOKKU }}
 
     - name: Install SSH key for host forwarding
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.SSH_POST_FORWARDING_KEY }}
-        name: id_rsa
-        known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+        key: ${{ secrets.SSH_KEY_JUMP_HOST }}
+        name: id_jumphost
+        known_hosts: ${{ secrets.SSH_KNOWN_HOST_JUMP_HOST }}
+        config: ${{ secrets.SSH_CONFIG_JUMP_HOST }}
 
     - name: Deploy to dev-dokku
       run: |
         git remote add dev-dokku dokku@matcloud.xyz:optimadeclient
-        git config --global user.email "casper.andersen@epfl.ch"
+        git config --global user.email "casper.w.andersen@sintef.no"
         git config --global user.name "Casper Welzel Andersen"
         git checkout master
         git push dev-dokku master
