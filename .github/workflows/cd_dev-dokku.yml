@@ -39,4 +39,4 @@ jobs:
         git config --global user.email "casper.w.andersen@sintef.no"
         git config --global user.name "Casper Welzel Andersen"
         git checkout master
-        git push dokku master:random-issue
+        git push dokku master
