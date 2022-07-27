@@ -1,0 +1,37 @@
+name: CD to dokku
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.repository == 'materialscloud-org/tools-optimade-client'
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install SSH key for dokku
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_KEY_DOKKU }}
+        name: id_optimadeclient_ed25519
+        known_hosts: ${{ secrets.SSH_KNOWN_HOST_DOKKU }}
+        config: |
+          Host materialscloud.io
+            Hostname %h
+            IdentityFile ~/.ssh/id_optimadeclient_ed25519
+
+    - name: Deploy to dokku
+      run: |
+        git remote add dokku dokku@materialscloud.io:optimadeclient
+        git config --global user.email "jusong.yeu@gmail.com"
+        git config --global user.name "Jusong Yu"
+        git checkout master
+        git push dokku master
