@@ -15,10 +15,11 @@ git push dev-dokku <local-test-branch>:master
 
 If all good after merge the PR to `master` branch, the deploy CI action will automatically run push to production `dokku` server.
 
-The test deployment is on https://optimadeclient.matcloud.xyz/, the production deployment is on https://www.materialscloud.org/work/tools/optimadeclient. 
+The test deployment is on https://dev-www.materialscloud.org/work/tools/optimadeclient, the production deployment is on https://www.materialscloud.org/work/tools/optimadeclient. 
 Both use the same database providers list retrieved from https://aiida.materialscloud.org/optimade/v1/links
 
-## Authors
+## Contacts
 
 Casper Welzel Andersen, casper.andersen@epfl.ch
 Jusong Yu, jusong.yu@epfl.ch
+Kristjan Eimre, kristjan.eimre@epfl.ch 
