@@ -8,7 +8,7 @@
   },
   "VoilaConfiguration": {
     "enable_nbextensions": true,
-    "template": "materialscloud-iframe",
+    "template": "materialscloud-tool",
     "strip_sources": true,
     "preheat_kernel": true
   },
