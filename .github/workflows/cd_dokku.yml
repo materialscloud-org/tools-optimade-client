@@ -31,7 +31,7 @@ jobs:
     - name: Deploy to dokku
       run: |
         git remote add dokku dokku@materialscloud.io:optimadeclient
-        git config --global user.email "jusong.yeu@gmail.com"
-        git config --global user.name "Jusong Yu"
+        git config --global user.email "dev@aiidalab.org"
+        git config --global user.name "AiiDAlab Team"
         git checkout master
         git push dokku master
