@@ -36,6 +36,7 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Topic :: Database :: Front-Ends",
         "Topic :: Scientific/Engineering",
         "Topic :: Scientific/Engineering :: Chemistry",
