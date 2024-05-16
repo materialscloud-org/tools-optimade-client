@@ -1,3 +1,3 @@
-optimade-client[server]==2022.9.19
+ipyoptimade[voila]==1.0.0a0
 voila-materialscloud-template>=0.3.6,<1
 -e .

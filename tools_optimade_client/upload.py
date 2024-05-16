@@ -5,10 +5,10 @@ import warnings
 
 import ipywidgets as ipw
 from optimade.adapters import Structure
-from optimade_client.exceptions import OptimadeClientError
-from optimade_client.logger import LOGGER
-from optimade_client.utils import ButtonStyle, DEVELOPMENT_MODE
-from optimade_client.warnings import OptimadeClientWarning
+from ipyoptimade.exceptions import OptimadeClientError
+from ipyoptimade.logger import LOGGER
+from ipyoptimade.utils import ButtonStyle, DEVELOPMENT_MODE
+from ipyoptimade.warnings import OptimadeClientWarning
 from traitlets import traitlets
 
 

@@ -6,7 +6,7 @@ It runs a Jupyter notebook in Voilà with the [Materials Cloud Voilà template](
 
 ## Test and deploy
 
-Once the changes are make, push to `dev-dokku` server to see if the new changes work well by running: 
+Once the changes are made, push to `dev-dokku` server to see if the new changes work well by running: 
 
 ```bash
 git remote add dev-dokku dokku@matcloud.xyz:optimadeclient
@@ -20,6 +20,6 @@ Both use the same database providers list retrieved from https://aiida.materials
 
 ## Contacts
 
-Casper Welzel Andersen, casper.andersen@epfl.ch
-Jusong Yu, jusong.yu@epfl.ch
+Casper Welzel Andersen, casper.andersen@epfl.ch  
+Jusong Yu, jusong.yu@epfl.ch  
 Kristjan Eimre, kristjan.eimre@epfl.ch 
