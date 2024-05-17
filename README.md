@@ -4,6 +4,12 @@ An OPTIMADE Client as a Materials Cloud tool.
 
 It runs a Jupyter notebook in Voilà with the [Materials Cloud Voilà template](https://github.com/materialscloud-org/voila-materialscloud-template).
 
+## Run locally
+
+```bash
+voila --Voila.config_file_paths=./ OPTIMADE-Client.ipynb
+```
+
 ## Test and deploy
 
 Once the changes are made, push to `dev-dokku` server to see if the new changes work well by running: 
