@@ -1,3 +1,4 @@
-ipyoptimade==1.0.0
+ipyoptimade~=1.0.0
 voila-materialscloud-template~=0.4.3
+jupyterlab~=4.2.1
 -e .
