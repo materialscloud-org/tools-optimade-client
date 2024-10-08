@@ -11,6 +11,13 @@ pip install -e .
 voila --Voila.config_file_paths=./ OPTIMADE-Client.ipynb
 ```
 
+For development:
+
+```bash
+pip install -e .[dev]
+pre-commit install
+```
+
 ## Test and deploy
 
 Once the changes are made, push to `dev-dokku` server to see if the new changes work well by running: 

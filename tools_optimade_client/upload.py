@@ -14,6 +14,7 @@ from traitlets import traitlets
 QE_INPUT_APP_URL_PROD = "https://qeinputgenerator.materialscloud.io"
 QE_INPUT_APP_URL_DEV = "https://qeinputgenerator.matcloud.xyz"
 
+
 class QEInputButton(ipw.HTML):
     """QE Input Generator upload button
 
@@ -67,7 +68,9 @@ XHR.send(FD);">Use in QE Input Generator</button>
         else:
             self._button_style = ButtonStyle.DEFAULT
 
-        self._default_domain = QE_INPUT_APP_URL_DEV if DEVELOPMENT_MODE else QE_INPUT_APP_URL_PROD
+        self._default_domain = (
+            QE_INPUT_APP_URL_DEV if DEVELOPMENT_MODE else QE_INPUT_APP_URL_PROD
+        )
 
         kwargs.pop("value", None)
         super().__init__(
