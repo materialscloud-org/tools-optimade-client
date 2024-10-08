@@ -11,6 +11,8 @@ from ipyoptimade.utils import ButtonStyle, DEVELOPMENT_MODE
 from ipyoptimade.warnings import OptimadeClientWarning
 from traitlets import traitlets
 
+QE_INPUT_APP_URL_PROD = "https://qeinputgenerator.materialscloud.io"
+QE_INPUT_APP_URL_DEV = "https://qeinputgenerator.matcloud.xyz"
 
 class QEInputButton(ipw.HTML):
     """QE Input Generator upload button
@@ -39,7 +41,7 @@ XHR.onreadystatechange = function() {{
     if (XHR.readyState === 4) {{
         var response = JSON.parse(XHR.responseText);
         var link = document.createElement('a');
-        link.href = response.redirect;
+        link.href = '{domain}' + response.redirect;
         link.target = '_blank';
         document.body.appendChild(link);
         link.click();
@@ -47,7 +49,7 @@ XHR.onreadystatechange = function() {{
     }}
 }}
 
-XHR.open('POST', 'https://{subdomain}.materialscloud.org/qeinputgenerator/compute/upload_structure/')
+XHR.open('POST', '{domain}/compute/upload_structure/')
 XHR.send(FD);">Use in QE Input Generator</button>
 """
 
@@ -65,7 +67,7 @@ XHR.send(FD);">Use in QE Input Generator</button>
         else:
             self._button_style = ButtonStyle.DEFAULT
 
-        self._default_subdomain = "dev-tools" if DEVELOPMENT_MODE else "tools"
+        self._default_domain = QE_INPUT_APP_URL_DEV if DEVELOPMENT_MODE else QE_INPUT_APP_URL_PROD
 
         kwargs.pop("value", None)
         super().__init__(
@@ -88,7 +90,7 @@ XHR.send(FD);">Use in QE Input Generator</button>
             button_style=self.style.value,
             data=kwargs.get("data", ""),
             disabled=kwargs.get("disabled", "disabled"),
-            subdomain=kwargs.get("subdomain", self._default_subdomain),
+            domain=kwargs.get("domain", self._default_domain),
         )
 
     def format_button(self, disabled: bool = True, data: str = None) -> None:

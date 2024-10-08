@@ -7,7 +7,7 @@ It runs a Jupyter notebook in Voilà with the [Materials Cloud Voilà template](
 ## Run locally
 
 ```bash
-pip install .
+pip install -e .
 voila --Voila.config_file_paths=./ OPTIMADE-Client.ipynb
 ```
 
