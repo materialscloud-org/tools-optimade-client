@@ -1,0 +1,34 @@
+name: Publish Docker Image
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-and-push:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-24.04
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Log in to GitHub Container Registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Build Docker image
+      run: |
+        docker build -t ghcr.io/materialscloud-org/tools-optimade-client:${{ github.ref_name }} -t ghcr.io/materialscloud-org/tools-optimade-client:latest .
+
+    - name: Push Docker image with tag
+      run: |
+        docker push ghcr.io/materialscloud-org/tools-optimade-client:${{ github.ref_name }}
+
+    - name: Push Docker image with latest tag
+      run: |
+        docker push ghcr.io/materialscloud-org/tools-optimade-client:latest
