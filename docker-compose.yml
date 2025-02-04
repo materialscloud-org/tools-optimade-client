@@ -1,0 +1,7 @@
+services:
+  tools-optimade-client:
+    build: .
+    image: tools-optimade-client
+    container_name: tools-optimade-client
+    ports:
+      - "5000:5000"
