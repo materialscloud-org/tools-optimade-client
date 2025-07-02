@@ -1,5 +1,6 @@
 from pathlib import Path
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 TOP_DIR = Path(__file__).resolve().parent
 
@@ -14,7 +15,7 @@ with open(TOP_DIR.joinpath("requirements_dev.txt")) as handle:
 
 setup(
     name="tools-optimade-client",
-    version="2025.2.13",
+    version="2025.07.02",
     license="MIT License",
     author="Casper Welzel Andersen",
     author_email="casper.andersen@epfl.ch",
