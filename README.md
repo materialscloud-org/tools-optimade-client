@@ -18,22 +18,24 @@ pip install -e .[dev]
 pre-commit install
 ```
 
-## Test and deploy
+## Deploy to Materials Cloud
 
-Once the changes are made, push to `dev-dokku` server to see if the new changes work well by running: 
+After a tag/release is created, Github Actions will build and publish the docker image at
 
-```bash
-git remote add dev-dokku dokku@matcloud.xyz:optimadeclient
-git push dev-dokku <local-test-branch>:master
+```
+ghcr.io/materialscloud-org/tools-optimade-client:<tag>
+ghcr.io/materialscloud-org/tools-optimade-client:latest
 ```
 
-If all good after merge the PR to `master` branch, the deploy CI action will automatically run push to production `dokku` server.
+The Materials Cloud server will deploy these images to
 
-The test deployment is on https://optimadeclient.matcloud.xyz/, the production deployment is on https://optimadeclient.materialscloud.io/. 
-Both use the same database providers list retrieved from https://aiida.materialscloud.org/optimade/v1/links
+- https://optimadeclient.dev.materialscloud.io/
+- https://optimadeclient.materialscloud.io/
+
+Note, a manual deploy might need to be triggered.
 
 ## Contacts
 
 Casper Welzel Andersen, casper.andersen@epfl.ch  
 Jusong Yu, jusong.yu@epfl.ch  
-Kristjan Eimre, kristjan.eimre@epfl.ch 
+Kristjan Eimre, kristjan.eimre@epfl.ch
