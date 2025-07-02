@@ -20,10 +20,17 @@ pre-commit install
 
 ## Deploy to Materials Cloud
 
-After a tag/release is created, Github Actions will build and publish the docker image at
+To build and publish latest Docker images:
 
 ```
-ghcr.io/materialscloud-org/tools-optimade-client:<tag>
+git tag YYYY.MM.DD
+git push --tags
+```
+
+this will start a Github actions workflow that builds and pushes the latest Docker image to
+
+```
+ghcr.io/materialscloud-org/tools-optimade-client:YYYY.MM.DD
 ghcr.io/materialscloud-org/tools-optimade-client:latest
 ```
 
@@ -32,7 +39,7 @@ The Materials Cloud server will deploy these images to
 - https://optimadeclient.dev.materialscloud.io/
 - https://optimadeclient.materialscloud.io/
 
-Note, a manual deploy might need to be triggered.
+(A manual deploy might need to be triggered.)
 
 ## Contacts
 
