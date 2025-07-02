@@ -22,6 +22,9 @@ pre-commit install
 
 To build and publish latest Docker images:
 
+- update version in `setup.py`, commit and push;
+- create and push a new tag:
+
 ```
 git tag YYYY.MM.DD
 git push --tags
