@@ -1,3 +1,8 @@
+> [!WARNING]
+> This repository is **archived** and no longer maintained.
+> 
+> A new version of this tool has been implemented in **https://github.com/materialscloud-org/tools-optimadeclient-react**.
+
 # OPTIMADE Client
 
 An OPTIMADE Client as a Materials Cloud tool.
